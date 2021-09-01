@@ -6,8 +6,9 @@
   --primary-accent: #00ffc1ff;
   --secondary-accent: #58fbd3ff;
   --brown: #b85c38;
-  /* --metallic: #028090; */
+  --dark-green: #028090;
   --metallic: #2be2c4;
+  --milk: #f1faee;
 
   /* Typography */
   --ff-regular: "Poppins", sans-serif;
@@ -20,7 +21,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   color: var(--primary-accent);
   font-family: var(--ff-regular);
@@ -28,10 +31,11 @@ body {
 
 /* utility classes */
 .container {
-  width: 100%;
-  height: 100vh;
+  max-width: 100%;
+  min-height: 100vh;
   background-color: var(--parimary-dark);
 }
+
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
@@ -50,23 +54,31 @@ nav {
 }
 
 /* Logo */
-.logo img {
-  max-width: 75%;
+.logo {
+  cursor: pointer;
+}
+/* .logo:hover svg path {
+  fill: var(--milk);
+  stroke: var(--milk);
+} */
+.logo svg {
+  max-width: 85%;
   padding: 0.5em;
 }
 
-nav ul {
+/* Nav-links */
+.nav-links {
   list-style: none;
 }
-nav ul li {
+.nav-links li {
   display: inline-block;
 }
-nav ul li a {
+.nav-links li a {
   text-decoration: none;
   color: var(--primary-accent);
   margin: 0 2em;
 }
-nav ul li a:hover {
+.nav-links a:hover {
   color: #fff;
 }
 
@@ -82,7 +94,7 @@ nav ul li a:hover {
   /* font-weight: 650; */
   border-radius: 30px;
 }
-.btn:hover {
+.btn:hover:not(.plan-btn) {
   background-color: var(--metallic);
   color: #ffffff;
 }
@@ -116,16 +128,154 @@ nav ul li a:hover {
   max-width: 75%;
   display: block;
   margin: 0 auto;
+  transition: 500ms;
+}
+.hero-image img:hover {
+  transform: scale(120%);
 }
 .social-media {
   position: absolute;
   bottom: 0;
   left: 0;
 }
-.social-media a {
+
+.social-media a,
+.footer-social-media a {
   margin: 0 1em;
   cursor: pointer;
 }
 .social-media a:nth-of-type(1) {
   margin-left: 0;
+}
+.social-media a:hover svg path,
+.svg:hover {
+  fill: var(--milk);
+}
+/* plans-switch */
+
+.plans-switch {
+  max-width: 400px;
+  background-color: var(--dark-green);
+  border-radius: 50px;
+  margin: 0 auto;
+  padding: 1em 1.25em;
+  display: flex;
+  justify-content: space-between;
+  transition: cubic-bezier(0.65, 0.93, 0.72, 0.67) 2s;
+}
+.plans-switch button {
+  color: #ffffff;
+}
+.inactive {
+  background: transparent;
+}
+
+/* Plans Section */
+.plan-cards-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4em;
+}
+.plan-card {
+  color: #000;
+  max-width: 310px;
+  background-color: var(--milk);
+  padding: 0.5em 2em;
+  margin: 0 1.5em;
+}
+
+.plan-card .plan-card-content h3,
+span:not("best-value") {
+  color: var(--dark-green);
+  margin-top: 0;
+}
+.plan-card .plan-card-content h3 {
+  font-size: 1.75rem;
+  font-weight: normal;
+}
+.plan-card .plan-card-content span {
+  margin: 0 10px 0 0;
+}
+.plan-card .plan-card-content .amt {
+  font-size: 2rem;
+}
+.plan-description {
+  margin: 16px auto;
+}
+.plan-card-content ul li {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+.plan-card-content ul li::before {
+  content: url("./images/check.svg");
+  margin-right: 8px;
+}
+
+.choose-plan-btn {
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  background-color: var(--dark-green);
+  color: #fff;
+  border-radius: 30px;
+  /* font-size: 18px; */
+  padding: 16px 8px;
+  margin: 2rem 0;
+  text-align: center;
+}
+.best-value {
+  background-color: var(--dark-green);
+  color: var(--milk);
+}
+.best-value .choose-plan-btn {
+  background-color: var(--milk);
+  color: var(--dark-green);
+}
+.best-value .plan-card-content ul li::before {
+  content: url("./images/check-light.svg");
+}
+
+/* Footer */
+.footer-container {
+  min-height: 20vh;
+}
+.footer {
+  border: 2px solid var(--secondary-accent);
+  border-bottom: none;
+  padding: 1em 0;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.quick-links {
+  display: flex;
+  flex-direction: column;
+}
+.quick-links span {
+  color: var(--milk);
+  font-size: 1.2rem;
+  margin: 8px 0;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+.footer-links li a {
+  margin: 0;
+}
+
+/* Footer Social Media */
+.footer-social-media {
+  position: relative;
+  margin: 8px 0;
+}
+.footer-social-media a:nth-of-type(1) {
+  margin-left: 0;
+}
+.footer-social-media a:hover svg path {
+  fill: var(--milk);
 }
